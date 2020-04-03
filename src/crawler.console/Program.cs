@@ -5,6 +5,8 @@ using MongoDB.Driver;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using crawler.lib.contracts;
+using System.Reflection;
 
 namespace crawler.console
 {
@@ -15,6 +17,16 @@ namespace crawler.console
             var builder = new HostBuilder().ConfigureServices((HostBuilder, sc) =>
             {
                 sc.AddHostedService<ConsoleHost>();
+
+                var assembly = Assembly.GetAssembly(typeof(LinkData));
+
+                sc.AddSingleton<IHostedService, ConsoleHost>();
+
+                sc.Scan(s =>
+                    s.FromAssemblies(assembly)
+                        .AddClasses()
+                        .AsImplementedInterfaces()
+                        .WithSingletonLifetime());
 
                 sc.Configure<MongoClientSettings>(opt =>
                 {
