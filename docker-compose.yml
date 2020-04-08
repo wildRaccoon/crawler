@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  mongodb_container:
+  mdb:
     image: mongo:latest
     environment:
       MONGO_INITDB_ROOT_USERNAME: root

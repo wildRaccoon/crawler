@@ -26,6 +26,18 @@ namespace crawler.lib.services.Repository
             {
                 Links.Indexes.CreateOne(new CreateIndexModel<LinkData>(Builders<LinkData>.IndexKeys.Ascending(_ => _.Url)));
             }
+
+            if (Pages.Indexes.List().Any())
+            {
+                Pages.Indexes.CreateOne(new CreateIndexModel<PageData>(Builders<PageData>.IndexKeys.Ascending(_ => _.SiteId)));
+                Pages.Indexes.CreateOne(new CreateIndexModel<PageData>(Builders<PageData>.IndexKeys.Ascending(_ => _.Url)));
+            }
+
+            if (Products.Indexes.List().Any())
+            {
+                Products.Indexes.CreateOne(new CreateIndexModel<ProductData>(Builders<ProductData>.IndexKeys.Ascending(_ => _.SiteId)));
+                Products.Indexes.CreateOne(new CreateIndexModel<ProductData>(Builders<ProductData>.IndexKeys.Ascending(_ => _.Url)));
+            }
         }
     }
 }
