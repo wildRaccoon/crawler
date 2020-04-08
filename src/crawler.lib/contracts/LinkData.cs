@@ -9,6 +9,10 @@ namespace crawler.lib.contracts
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id {get; set;}
         public string Url { get; set; }
-        public bool Loaded {get; set;} 
+        public bool Loaded {get; set;}
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string SiteId { get; set; }
+
     }
 }

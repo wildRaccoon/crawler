@@ -10,5 +10,8 @@ namespace crawler.lib.contracts
         public string Id { get; set; }
         public string Url { get; set; }
         public Dictionary<string, string> Props { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string SiteId { get; set; }
     }
 }

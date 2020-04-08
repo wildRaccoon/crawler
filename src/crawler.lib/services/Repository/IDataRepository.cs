@@ -8,5 +8,6 @@ namespace crawler.lib.services.Repository
         IMongoCollection<PageData> Pages { get; }
         IMongoCollection<LinkData> Links { get; }
         IMongoCollection<ProductData> Products { get; }
+        IMongoCollection<SiteData> Sites { get; }
     }
 }

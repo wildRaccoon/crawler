@@ -11,6 +11,7 @@ namespace crawler.lib.services.Repository
         public IMongoCollection<PageData> Pages { get; }
         public IMongoCollection<LinkData> Links { get; }
         public IMongoCollection<ProductData> Products { get; }
+        public IMongoCollection<SiteData> Sites { get; }
 
         public DataRepository(IMongoDatabase client)
         {
@@ -19,8 +20,9 @@ namespace crawler.lib.services.Repository
             Pages = client.GetCollection<PageData>(nameof(PageData));
             Links = client.GetCollection<LinkData>(nameof(LinkData));
             Products = client.GetCollection<ProductData>(nameof(ProductData));
+            Sites = client.GetCollection<SiteData>(nameof(SiteData));
 
-            if(!Links.Indexes.List().Any())
+            if (!Links.Indexes.List().Any())
             {
                 Links.Indexes.CreateOne(new CreateIndexModel<LinkData>(Builders<LinkData>.IndexKeys.Ascending(_ => _.Url)));
             }
