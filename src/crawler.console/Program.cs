@@ -32,7 +32,7 @@ namespace crawler.console
                 {
                     opt.MinConnectionPoolSize = 1;
                     opt.MaxConnectionPoolSize = 25;
-                    opt.Server = new MongoServerAddress("localhost");
+                    opt.Server = new MongoServerAddress("localhost",27017);
                 });
 
                 sc.AddSingleton<IMongoDatabase>(
