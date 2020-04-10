@@ -12,6 +12,5 @@ namespace crawler.lib.contracts
 
         [BsonRepresentation(BsonType.ObjectId)]
         public string SiteId { get; set; }
-
     }
 }
