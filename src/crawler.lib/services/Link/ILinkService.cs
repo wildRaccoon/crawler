@@ -6,6 +6,8 @@ namespace crawler.lib.services.Link
 {
     public interface ILinkService
     {
+        Task LoadSiteAsync(SiteData site);
+
         Task<PageData> DownloadAsync(LinkData link);
 
         Task<List<LinkData>> ParseLinksAsync(PageData page);

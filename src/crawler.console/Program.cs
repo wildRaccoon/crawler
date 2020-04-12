@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using crawler.lib.contracts;
 using System.Reflection;
+using System.Net;
 
 namespace crawler.console
 {
@@ -39,6 +40,8 @@ namespace crawler.console
                     sp => new MongoClient(sp.GetService<IOptions<MongoClientSettings>>().Value)
                             .GetDatabase("crawlrdb")
                 );
+
+                sc.AddTransient<WebClient>();
             }).ConfigureLogging((hb, lb) =>
             {
                 lb.AddConsole(cfg =>
